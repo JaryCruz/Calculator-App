@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Dark Theme Default */
+  --very-unsaturated-dark-blue-one: hsl(222, 26%, 31%);
+  --very-unsaturated-dark-blue-two: hsl(223, 31%, 20%);
+  --very-unsaturated-dark-blue-three: hsl(224, 36%, 15%);  
+  --unsaturated-dark-blue-one: hsl(225, 21%, 49%);
+  --unsaturated-dark-blue-two: hsl(224, 28%, 35%);
+  --red: hsl(6, 63%, 50%);
+  --dark-red: hsl(6, 70%, 34%);
+  --light-grayish-orange: hsl(30, 25%, 89%);
+  --grayish-orange: hsl(28, 16%, 65%);
+  --very-dark-grayish-blue: hsl(221, 14%, 31%);
+  --white: hsl(0, 0%, 100%);
+  --text-color: #fff;
+
+  font-size: 32px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  background: var(--very-unsaturated-dark-blue-one);
+}
+
+body.light {
+  /* Light Theme Colors */
+  --very-unsaturated-dark-blue-one: hsl(0, 0%, 90%);
+  --very-unsaturated-dark-blue-two: hsl(0, 5%, 81%);
+  --very-unsaturated-dark-blue-three: hsl(0, 0%, 93%);
+  --unsaturated-dark-blue-one: hsl(185, 42%, 37%);
+  --unsaturated-dark-blue-two: hsl(185, 58%, 25%);
+  --red: hsl(25, 98%, 40%);
+  --dark-red: hsl(25, 99%, 27%);
+  --light-grayish-orange: hsl(45, 7%, 89%);
+  --grayish-orange: hsl(35, 11%, 61%);
+  --very-dark-grayish-blue: hsl(60, 10%, 19%);
+  --white: hsl(0, 0%, 100%);
+  --text-color: hsl(60, 10%, 19%);
+}
+
+h1 {
+  color: var(--text-color);
+  font-size: 35px;
+}
+
+main {
+  width: 500px;
+  margin: 100px auto;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  height: 50px;
+  font-weight: 700;
+}
+
+button:hover {
+  filter: brightness(1.4);
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.theme p {
+  color: var(--text-color);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.toggle input[type='checkbox'] {
+  display: none;
+}
+
+.toggle label {
+  background-color: var(--very-unsaturated-dark-blue-two);
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: all ease-in-out 0.3s;
+  width: 50px;
+  height: 25px;
+}
+
+.toggle label::after {
+  background-color: var(--red);
+  border-radius: 50%;
+  content: ' ';
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  top: 3.5px;
+  transition: all ease-in-out 0.3s;
+  width: 17px;
+  height: 17px;
+}
+
+.toggle input[type='checkbox']:checked ~ label::after {
+  transform: translateX(20px);
+}
+
+/* Output */
+.output {
+  background-color: var(--very-unsaturated-dark-blue-three);
+  border-radius: 10px;
+  margin: 20px 0;
+  height: 125px;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: var(--text-color);
+}
+
+.output .previous-operand {
+  color: var(--text-color);
+  opacity: 0.8;
+  font-size: 25px;
+}
+
+.output .current-operand {
+  color: var(--text-color);
+  font-size: 50px;
+}
+
+/* Calculator Buttons */
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--very-unsaturated-dark-blue-two);
+}
+
+.calc-buttons .btn {
+  font-size: 32px;
+  color: var(--very-dark-grayish-blue);
+  background-color: var(--light-grayish-orange);
+  box-shadow: 0px -2px 2px 1px var(--grayish-orange) inset;
+}
+
+.calc-buttons button:last-child {
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 20px;
+  box-shadow: 0px -2px 2px 1px var(--dark-red) inset;
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.func-btn {
+  color: var(--white);
+  background: var(--unsaturated-dark-blue-one);
+  font-size: 20px;
+  box-shadow: 0px -2px 2px 1px var(--unsaturated-dark-blue-two) inset;
+}
+
+@media (max-width: 550px) {
+  main {
+    width: 85vw;
+    margin: 40px auto;
+  }
+
+  .calc-buttons {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .output {
+    height: 100px;  
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .output .previous-operand {
+    font-size: 20px;
+  }
+
+  .output .current-operand {
+    font-size: 45px;
+  }
+}
